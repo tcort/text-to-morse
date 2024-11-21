@@ -62,14 +62,14 @@ int main(int argc, char *argv[]) {
 		{
 			.arg = 'f',
 			.longarg = "fwpm",
-			.description = "Farnsworth spacing words per minute. Default 18.",
+			.description = "Farnsworth spacing words per minute. Min 1. Max 100. Default 18.",
 			.has_value = 1
 		},
 		PROG_ARG_HELP,
 		{
 			.arg = 't',
 			.longarg = "tone",
-			.description = "the frequency of the generated tone in Hertz. Default 600.",
+			.description = "the frequency of the generated tone in Hertz. Min 300. Max 1200. Default 600.",
 			.has_value = 1
 		},
 		{
@@ -81,7 +81,7 @@ int main(int argc, char *argv[]) {
 		{
 			.arg = 'w',
 			.longarg = "wpm",
-			.description = "words per minute. Default 18.",
+			.description = "words per minute. Min 1. Max 100. Default 18.",
 			.has_value = 1
 		},
 		PROG_ARG_END
@@ -119,7 +119,7 @@ int main(int argc, char *argv[]) {
 				break;
 			case 't':
 				frequency = atoi(argval);
-				frequency = frequency < 100 || frequency > 1000 ? FREQUENCY : frequency;
+				frequency = frequency < 300 || frequency > 1200 ? FREQUENCY : frequency;
 				break;
 			case 'v':
 				verbose += 1;
