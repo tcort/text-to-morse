@@ -40,6 +40,12 @@ Convert the text of `hello.txt` into a FLAC audio file name `hello.flac`:
 text-to-morse hello.txt hello.flac
 ```
 
+## Audio Quality
+
+Various combinations of bits per sample and sample rates were tried.
+The best audio quality with the smallest file sizes turned out to be
+a single audio channel with 16-bit samples at a sample rate of 8 kHz.
+
 ## Sample Encoding Time and Memory Usage, Audio Duration and File Size
 
 An English text containing 46,000 characters comprising 8,400 words rendered
