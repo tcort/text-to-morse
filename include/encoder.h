@@ -36,9 +36,6 @@
 #define COMPRESSION_LEVEL (8)
 #define VERIFY (1)
 
-/* 50% volume, 18 wpm default, 600 Hz tone default */
-#define VOLUME (8192)
-
 int encoder_encode(char *filepath, int16_t *result, size_t result_len, size_t total_samples);
 
 #endif

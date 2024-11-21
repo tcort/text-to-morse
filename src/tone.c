@@ -39,9 +39,19 @@ size_t  tone_get_dah_len(void)	{ return dah_tone_len;	}
  */
 static void tone_make(int16_t *samples, size_t nsamples, int rise_time, int fall_time, int frequency) {
 	int i;
+
+	int volume = 0;
+
+	/* set all bits except sign bit to 1 */
+	for (i = 0; i < BPS - 1; i++) {
+		volume = (volume<<1) | 0x1;
+	}
+
+	volume = volume * 0.50119; /* peak at -3db */
+
 	for (i = 0; i < nsamples; i++) {
 		double t = (double) i / SAMPLE_RATE;
-		samples[i] = VOLUME * sin(frequency*t*2*M_PI);
+		samples[i] = volume * sin(frequency*t*2*M_PI);
 
 		if (i < rise_time) {
 			samples[i] = samples[i] * (i*1.0/rise_time*1.0);
